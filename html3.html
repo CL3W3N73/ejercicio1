@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css.css">  
+</head>
+
+<body>
+<img src="img/c.webp" alt="Mi imagen" height="100px">
+<h1>SORTEO</h1>
+
+<form id="personForm">
+<label for="personName">Nombre:</label>
+<input type="text" id="personName" required>     
+<button type="button" onclick="addPerson()">Agregar Persona</button><br> <br>
+</form>
+<ul id="peopleList" style="display: none;"></ul>
+<button onclick="drawWinner()">¡Sortear!</button>
+<button onclick="showList()">Mostrar Lista</button>
+<br> <br>
+
+<script>
+    let people = [];
+          
+    // Función para agregar una persona a la lista
+    function addPerson() {
+        const personName = document.getElementById('personName').value;
+        if (personName) {
+            people.push(personName);
+            document.getElementById('personName').value = '';
+        }
+    }
+
+    // Función para realizar el sorteo y mostrar al ganador
+    function drawWinner() {
+        if (people.length > 0) {
+            const randomIndex = Math.floor(Math.random() * people.length);
+            const winner = people[randomIndex];
+
+            // Mostrar el ganador en pantalla
+            alert(`El ganador es: ${winner}`);
+        } }
+            
+
+    // Función para agregar una persona a la lista
+    function addPerson() {
+        const personName = document.getElementById('personName').value;
+        if (personName) {
+            people.push(personName);
+            document.getElementById('personName').value = '';
+        }
+    }
+
+    // Función para realizar el sorteo y mostrar al ganador
+    function drawWinner() {
+        if (people.length > 0) {
+            const randomIndex = Math.floor(Math.random() * people.length);
+            const winner = people[randomIndex];
+
+            // Mostrar el ganador en pantalla
+            alert(`El ganador es: ${winner}`);
+          
+        } else {
+            alert('Agrega al menos una persona para poder sortear.');
+        }
+    }
+
+    // Función para mostrar la lista
+    function showList() {
+        if (people.length > 0) {
+            const peopleListElement = document.getElementById('peopleList');
+            
+            // Mostrar la lista en pantalla
+            peopleListElement.innerHTML = '<li>' + people.join('</li><li>') + '</li>';
+            
+            // Mostrar la lista
+            peopleListElement.style.display = 'block';
+        } else {
+            alert('La lista está vacía.');
+        }
+    }
+</script>
+
+
+</body>
+
+</html>
